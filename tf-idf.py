@@ -1,5 +1,5 @@
 import pandas as pd
-df = pd.read_csv('Consumer_Complaints.csv', nrows=80000)
+df = pd.read_csv('Consumer_Complaints.csv', nrows=200000)
 df.head()
 
 
@@ -22,7 +22,7 @@ plt.show()
 
 
 from sklearn.feature_extraction.text import TfidfVectorizer
-tfidf = TfidfVectorizer(sublinear_tf=True, min_df=5, norm='l2', encoding='latin-1', ngram_range=(1, 2), stop_words='english')
+tfidf = TfidfVectorizer(sublinear_tf=True, min_df=5, norm='l2', encoding='latin-1', stop_words='english')
 features = tfidf.fit_transform(df.Consumer_complaint_narrative).toarray()
 labels = df.category_id
 print(features.shape)
